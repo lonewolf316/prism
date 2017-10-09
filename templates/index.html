@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA////AJycnAAAw/8A/wC7AP+EAAA7OzsAUlJSAICAgABPT08AAAD/AL29vQAA/xEAAP/yAAAAAAAAAAAAAAAAAAAAAAABEREREREREAEQAAAAAAEEABAAAAAAAUQAAQAAAAARVQABAAAAdhFcEAEQAAhxHM0RABAAKJEd0xEREbsoEdM6ABERuygROqAAAAEbARqgAAAAARABEAAAAAAAEREAAAAAAAABEAAAAAAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+  <title>prism.</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+  <div id="app">
+    <h1>Prism.</h1>
+    
+    <label class='ctrl-autoUpdate'>
+      Auto Update:
+      <input type="checkbox" v-model="autoUpdate">
+    </label>
+  
+    <sketch-picker v-model="colors"></sketch-picker>
+    <h3>White LED</h3>
+    <input
+      class='ctrl-white'
+      type="range"
+      v-model='white'
+      min=0 max=255 step=1
+    >
+    
+    <div
+      class='btn'
+      :style='{backgroundColor : colors.hex}'
+      @click='sendColor'
+    >Update</div>
+  </div>
+  
+  <script src="{{url_for('static', filename='vendor/vue.js')}}"></script>
+  
+  <script src="{{url_for('static', filename='vendor/vue-color.js')}}"></script>
+  <script src="{{url_for('static', filename='index.js')}}" ></script>
+</body>
+</html>

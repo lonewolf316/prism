@@ -47,6 +47,16 @@ var vm = new Vue({
       }).catch(function(err) {
         console.log(err);
       })
-    }
+    },
+  sendFade: function() {
+    var url = SERVER_ADDRESS
+      + '/setFade?'
+    console.log(url)
+    fetch(url, {method: 'POST'}).then(function(res) {
+      console.log(res);
+    }).catch(function(err) {
+      console.log(err);
+    })
   }
+}
 })

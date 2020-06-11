@@ -31,6 +31,12 @@
       :style='{backgroundColor : colors.hex}'
       @click='sendColor'
     >Update</div>
+
+    <div
+      class='btn'
+      :style='{backgroundColor : white}'
+      @click='sendFade'
+    >Fade Rainbow</div>
   </div>
   
   <script src="{{url_for('static', filename='vendor/vue.js')}}"></script>

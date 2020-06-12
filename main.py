@@ -3,21 +3,26 @@ import neopixel, board, lightFuncs, threading
 
 def threadHandler(function, functionVarDict):
 	global bgThread
+	#Check if bgThread exists and is running
 	try:
 		threadLive = bgThread.is_alive()
 	except:
 		threadLive = False
 		print("bgThread already killed")
 	print(threadLive)
+
+	#If it is, kill it
 	if threadLive:
 		bgThread.doRun = False
 		bgThread.join()
 		print("Running thread killed")
 	
+	#If only intending to end function, return from here
 	if function=="kill":
 		return
+	#Else, establish a new background function thread
 	else:
-		bgThread = threading.Thread(target=lightFuncs.setFade)
+		bgThread = threading.Thread(target=lightFuncs.setFade, args=(strip,))
 		bgThread.doRun = True
 		bgThread.start()
 

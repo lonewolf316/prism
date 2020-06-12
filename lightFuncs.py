@@ -1,10 +1,13 @@
-import threading, time
+import threading, time, neopixel
+import colorsys
 
-def setFade():
+def setFade(strip):
     t = threading.currentThread()
-    x=0
     while getattr(t, "doRun", True):
-        print("Running thread", x, t.doRun)
-        x+=1
-        time.sleep(2)
+        for dec in range(0, 1000):
+            if getattr(t, "doRun", True):
+                x = colorsys.hls_to_rgb(dec/1000, .5, 1)
+                colour=[int(round(255*x[0])), int(round(255*x[1])), int(round(255*x[2]))]
+                strip.fill(colour)
+                time.sleep(0.01)
     print("stopping thread")
